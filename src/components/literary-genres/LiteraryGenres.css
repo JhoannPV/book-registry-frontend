@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+.literaryGenres {
+    @apply flex-1 p-8 bg-white rounded-lg shadow-lg border border-blue-300;
+}
+
+.literaryGenresTitle {
+    @apply text-3xl font-extrabold text-blue-900 mb-6;
+}
+
+.literaryGenresButton {
+    @apply block w-full bg-linear-to-r from-blue-500 to-blue-700 text-white py-3 rounded-lg text-lg font-bold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500;
+}
