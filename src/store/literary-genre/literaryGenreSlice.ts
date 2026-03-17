@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Book } from '../../hooks';
 
 const literaryGenre: string[] = [
     "fiction",
@@ -25,6 +26,20 @@ export const literaryGenreSlice = createSlice({
     initialState: {
         literaryGenre: literaryGenre,
         literaryGenreNames: literaryGenreNames,
+        arrayLiteraryGenre: [] as Book[]
     },
-    reducers: {}
+    reducers: {
+        onLoadBooks: (state, { payload = [] }) => {
+            console.log(payload);
+
+            payload.forEach((book: Book) => {
+                const exists = state.arrayLiteraryGenre.some(dbBook => dbBook.id === book.id);
+                if (!exists) {
+                    state.arrayLiteraryGenre.push(book);
+                }
+            });
+        },
+    }
 });
+
+export const { onLoadBooks } = literaryGenreSlice.actions;

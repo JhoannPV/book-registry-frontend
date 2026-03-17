@@ -4,11 +4,13 @@ import type { RootState } from ".";
 export const useLiteraryGenreStore = () => {
     const {
         literaryGenre,
-        literaryGenreNames
+        literaryGenreNames,
+        arrayLiteraryGenre,
     } = useSelector((state: RootState) => state.literaryGenre);
 
     return {
         literaryGenre,
-        literaryGenreNames
+        literaryGenreNames,
+        arrayLiteraryGenre,
     }
 }

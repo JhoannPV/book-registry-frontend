@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Genre, StyleGenre } from "../../features";
 import { menuGenre } from "../../helpers";
-import { Book, useBook } from "../../hooks";
+import { Book, useBook, useLiteraryGenreStore } from "../../hooks";
 
 export const LiteraryGenrePage = ({ genre, genreName }: { genre: string, genreName: string }) => {
-    const [books, setBooks] = useState<Book[]>([]);
     const { getBooksByCategory } = useBook();
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const fetchedBooks = await getBooksByCategory(genre);
-            setBooks(fetchedBooks);
-        };
-        fetchBooks();
-    }, []);
+        getBooksByCategory(genre);
+    }, [getBooksByCategory, genre]);
+
+
+    const { arrayLiteraryGenre: books } = useLiteraryGenreStore();
+
 
     const genreType: Genre = menuGenre(genre);
     const styles: StyleGenre = genreType.getStyles();
