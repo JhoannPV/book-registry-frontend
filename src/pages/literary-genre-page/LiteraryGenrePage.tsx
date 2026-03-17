@@ -4,11 +4,12 @@ import { menuGenre } from "../../helpers";
 import { Book, useBook, useLiteraryGenreStore } from "../../hooks";
 
 export const LiteraryGenrePage = ({ genre, genreName }: { genre: string, genreName: string }) => {
-    const { getBooksByCategory } = useBook();
+    const { getBooksByCategory, cleanBooks } = useBook();
 
     useEffect(() => {
+        cleanBooks();
         getBooksByCategory(genre);
-    }, [getBooksByCategory, genre]);
+    }, [cleanBooks, getBooksByCategory, genre]);
 
 
     const { arrayLiteraryGenre: books } = useLiteraryGenreStore();
@@ -19,7 +20,7 @@ export const LiteraryGenrePage = ({ genre, genreName }: { genre: string, genreNa
     const visual = genreType[1].getStyles() as EfectsStyleGenre;
 
     return (
-        <div className={`${styles.backgroundColor} ${visual.visualEffects} ${visual.fontFamily} ${visual.color} h-screen w-screen font-sans flex flex-col`}>
+        <div className={`${styles.backgroundColor} ${visual.visualEffects} ${visual.fontFamily} ${visual.color} min-h-screen w-full font-sans flex flex-col pb-8`}>
             <h1 className={`text-center text-4xl font-extrabold ${styles.textColor} mt-8`}>
                 Género Literario: {genreName}
             </h1>
@@ -33,7 +34,7 @@ export const LiteraryGenrePage = ({ genre, genreName }: { genre: string, genreNa
                 {
                     books && books.length > 0 ?
                         books.map((book: Book) => (
-                            <li key={book.id} className={`${styles.textColor} border ${styles.borderColor} rounded-lg p-4 shadow-md hover:shadow-lg transition-transform transform hover:scale-105`}>
+                            <li key={book.id} className={`${styles.textColor} border ${styles.borderColor} ${visual.visualEffects} rounded-lg p-4 shadow-md hover:shadow-lg transition-transform transform hover:scale-105`}>
                                 {book.bookName}
                             </li>
                         ))

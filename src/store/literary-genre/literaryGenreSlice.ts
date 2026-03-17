@@ -29,6 +29,9 @@ export const literaryGenreSlice = createSlice({
         arrayLiteraryGenre: [] as Book[]
     },
     reducers: {
+        onCleanBooks: (state) => {
+            state.arrayLiteraryGenre = [] as Book[];
+        },
         onLoadBooks: (state, { payload = [] }) => {
             console.log(payload);
 
@@ -42,4 +45,4 @@ export const literaryGenreSlice = createSlice({
     }
 });
 
-export const { onLoadBooks } = literaryGenreSlice.actions;
+export const { onLoadBooks, onCleanBooks } = literaryGenreSlice.actions;

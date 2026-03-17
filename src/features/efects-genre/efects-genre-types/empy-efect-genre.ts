@@ -5,6 +5,7 @@ export class EmptyEfectGenre extends EfectsGenre {
         fontFamily: "",
         color: "",
         visualEffects: "",
+        buttonStyles: "",
     };
 
     constructor() {
