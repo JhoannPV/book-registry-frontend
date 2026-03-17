@@ -1,7 +1,7 @@
 import { createGenre } from ".";
-import { FactoryEmptyGenre, FactoryFantasy, FactoryFiction, FactoryHorror, FactoryMystery, FactoryNonFiction, FactoryRomance, FactoryScienceFiction, Genre } from "../features";
+import { EfectsGenre, FactoryEmptyGenre, FactoryFantasy, FactoryFiction, FactoryHorror, FactoryMystery, FactoryNonFiction, FactoryRomance, FactoryScienceFiction, Genre } from "../features";
 
-export const menuGenre = (genre: string): Genre => {
+export const menuGenre = (genre: string): (Genre | EfectsGenre)[] => {
 
     return genre === "fiction" ? createGenre(new FactoryFiction) :
         genre === "horror" ? createGenre(new FactoryHorror) :

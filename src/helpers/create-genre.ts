@@ -1,5 +1,7 @@
-import { FactoryGenre, Genre } from "../features";
+import { EfectsGenre, FactoryGenre, Genre } from "../features";
 
-export const createGenre = (factory: FactoryGenre): Genre => {
-    return factory.createGenre();
+export const createGenre = (factory: FactoryGenre): (Genre | EfectsGenre)[] => {
+    const genre = factory.createGenre();
+    const visualEffects = factory.createEfect();
+    return [genre, visualEffects];
 }

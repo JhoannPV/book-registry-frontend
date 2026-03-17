@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Genre, StyleGenre } from "../../features";
+import { EfectsGenre, EfectsStyleGenre, Genre, StyleGenre } from "../../features";
 import { menuGenre } from "../../helpers";
 import { Book, useBook, useLiteraryGenreStore } from "../../hooks";
 
@@ -14,11 +14,12 @@ export const LiteraryGenrePage = ({ genre, genreName }: { genre: string, genreNa
     const { arrayLiteraryGenre: books } = useLiteraryGenreStore();
 
 
-    const genreType: Genre = menuGenre(genre);
-    const styles: StyleGenre = genreType.getStyles();
+    const genreType: (Genre | EfectsGenre)[] = menuGenre(genre);
+    const styles = genreType[0].getStyles() as StyleGenre;
+    const visual = genreType[1].getStyles() as EfectsStyleGenre;
 
     return (
-        <div className={`${styles.backgroundColor} h-screen w-screen font-sans flex flex-col`}>
+        <div className={`${styles.backgroundColor} ${visual.visualEffects} ${visual.fontFamily} ${visual.color} h-screen w-screen font-sans flex flex-col`}>
             <h1 className={`text-center text-4xl font-extrabold ${styles.textColor} mt-8`}>
                 Género Literario: {genreName}
             </h1>
