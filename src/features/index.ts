@@ -1,6 +1,7 @@
 // genre-literary
 
 export * from './genre-literary/types/styles-genre';
+export * from './genre-literary/types/efects-style-genre';
 export * from './genre-literary/genre/abstract-class-genre';
 export * from './genre-literary/genre/abstract-class-genre';
 export * from './genre-literary/factory-genre/abstrac-class-factory-genre';
