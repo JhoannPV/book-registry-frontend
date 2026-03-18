@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import './BookForm.css';
 import { useBook } from '../../hooks';
+import { DirectorBuilderBook } from '../../features';
 
 export const BookForm = ({ literaryGenreNames, literaryGenre }: { literaryGenreNames: string[], literaryGenre: string[] }) => {
     const { registryBook } = useBook();
@@ -31,7 +32,10 @@ export const BookForm = ({ literaryGenreNames, literaryGenre }: { literaryGenreN
             return;
         }
 
-        registryBook(formValues.bookName, formValues.category);
+        const book = new DirectorBuilderBook().createSimpleBook(formValues.bookName, formValues.category);
+
+        registryBook(book.dataBook);
+
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',

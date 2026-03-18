@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { bookRegistryApi } from "../api";
 import Swal from "sweetalert2";
 import { onCleanBooks, onLoadBooks } from "../store";
+import { DataBook } from "../features";
 
 export const useBook = () => {
     const dispatch = useDispatch();
 
-    const registryBook = useCallback(async (bookName: string, category: string) => {
+    const registryBook = useCallback(async (dataBook: DataBook) => {
         try {
-            await bookRegistryApi.post('/libros/register', { bookName, category });
+            await bookRegistryApi.post('/libros/register', dataBook);
         } catch {
             Swal.fire({
                 icon: 'error',
