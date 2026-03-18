@@ -24,11 +24,11 @@ export const useBook = () => {
         try {
             const response = await bookRegistryApi.get(`/libros/get/${category}`);
             dispatch(onLoadBooks(response.data));
-        } catch (error) {
+        } catch {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Hubo un error al obtener las obras del servidor.' + error,
+                text: 'Hubo un error al obtener las obras del servidor.',
             });
             return [];
         }
